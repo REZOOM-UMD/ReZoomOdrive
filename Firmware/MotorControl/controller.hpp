@@ -98,10 +98,6 @@ public:
     InputPort<float> vel_estimate_src_;
     InputPort<float> pos_wrap_src_;
 
-    // REZOOM
-    // This controls whether the scooter is in autonomy mode (controlled by
-    // Orin) or in human mode (controlled by manual inputs)
-    bool autonomy_mode = false;  
     float pos_setpoint_ = 0.0f;  // [turns]
     float vel_setpoint_ = 0.0f; // [turn/s]
     // float vel_setpoint = 800.0f; <sensorless example>

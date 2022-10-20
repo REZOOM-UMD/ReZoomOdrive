@@ -126,22 +126,6 @@ static float limitVel(const float vel_limit, const float vel_estimate, const flo
 }
 
 bool Controller::update() {
-    // If emergency brake is NOT pressed, carry on.
-    /*
-    if (true) { //get_adc_voltage(get_gpio(0)) <= 1.5) {
-        if (autonomy_mode) {
-            // Get input from Jetson
-            input_pos_ = jetson_input_pos
-            input_pos_updated_ = true
-        }
-        else {
-            // Only accept input for driving motors
-            if (axis_->axis_num_ = 0) {
-                // Get input from scooter
-                input_speed = fun (throttle input -> speed) - fun (brake input -> speed_)
-            }
-        }
-        */
     std::optional<float> pos_estimate_linear = pos_estimate_linear_src_.present();
     std::optional<float> pos_estimate_circular = pos_estimate_circular_src_.present();
     std::optional<float> pos_wrap = pos_wrap_src_.present();
