@@ -142,16 +142,6 @@ bool Controller::update() {
             }
         }
         */
-    if (get_adc_voltage(get_gpio(3)) >= 1.5) {
-        input_vel_ = 1.0;
-        // axis_->motor_.disarm();
-        // set_error(ERROR_INVALID_CIRCULAR_RANGE);
-        return false;
-    }
-    else {
-        input_vel_ = 0.0;
-        return false;
-    }
     std::optional<float> pos_estimate_linear = pos_estimate_linear_src_.present();
     std::optional<float> pos_estimate_circular = pos_estimate_circular_src_.present();
     std::optional<float> pos_wrap = pos_wrap_src_.present();
