@@ -399,11 +399,16 @@ static void analog_polling_thread(void *)
             struct PWMMapping_t *map = &odrv.config_.analog_mappings[i];
 
             // ReZoom Code
-            if (i == myBrakeGPIO) {
-                if (get_adc_relative_voltage(myBrakeGPIO) <= 3.3/2)
-                    axis.motor_.arm()
-                else if (!axis_.motor_.is_armed_)
-                    axis.motor_.arm()
+            Stm32Gpio myGPIO = gpios[3];
+            if (i == 3) {
+                if (get_adc_relative_voltage(myGPIO) <= 3.3/2) {
+                    for (auto& axis: axes) {
+                        axis.motor_.disarm();
+                    }               
+            //        Axis.motor_.disarm();
+            //    } else if (!axis_.motor_.is_armed_) {
+            //        axis_.motor_.arm();
+                }
             }
 
             if (fibre::is_endpoint_ref_valid(map->endpoint))
